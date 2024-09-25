@@ -5,18 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TypeScript Web App</title>
   <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <h1 id="greeting">Ingresa tu nombre<br></h1>
-  <input type="text" id="nombre" placeholder="Nombre">
-  <button id="mostrar">Mostrar tarjeta</button>
-  <div>
-    <h2 id="textoTarjeta"></h2>
-  </div>
-  <script src="index.js"></script>
 
   <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
   <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+
+  <script defer src="index.js"></script>
+</head>
+<body>
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Generador de tarjetas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    <div class="centered-form">
+      <ion-item>
+        <ion-label position="floating">Nombre o texto</ion-label>
+        <ion-input id="nameInput" type="text"></ion-input>
+      </ion-item>
+
+      <ion-button expand="full" id="generateButton">Generar tarjeta</ion-button>
+    </div>
+    <div id="cardContainer"></div>
+  </ion-content>
 </body>
 </html>

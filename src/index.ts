@@ -1,21 +1,36 @@
 // src/index.ts
-function tarjeta(){
-  const botonMostrar = document.getElementById('mostrar');
-  const tarjeta = document.getElementById('tarjeta');
-  const textoTarjeta = document.getElementById('textoTarjeta');
-  
-  if (botonMostrar && tarjeta && textoTarjeta) {
-      botonMostrar.addEventListener('click', () => {
-          const textoInput = (document.getElementById('nombre') as HTMLInputElement).value;
-  
-          if (textoInput) {
-              textoTarjeta.textContent = textoInput;
-              tarjeta.style.display = 'block';
-          } else {
-              alert('Por favor, introduce un texto.');
-          }
-      });
-  } else {
-      console.error('No se encontraron algunos elementos del DOM.');
-  }
-}
+console.log('Script cargado')
+
+document.addEventListener('DOMContentLoaded', () => {
+    const generarBoton = document.getElementById('generateButton') as HTMLButtonElement;
+    const nombreInput = document.getElementById('nameInput') as HTMLInputElement;
+    const cardContainer = document.getElementById('cardContainer');
+
+    const mensajeError = document.createElement('p');
+    mensajeError.style.color = 'red';
+    mensajeError.style.display = 'none'
+    cardContainer?.parentElement?.insertBefore(mensajeError, cardContainer);
+
+    generarBoton.addEventListener('click', () =>{
+        const nombre  = nombreInput.value as string;
+
+        
+        mensajeError.style.display='none';
+
+        if (!nombre || nombre.trim() === '') {
+            mensajeError.textContent = 'Error: Debes ingresar un nombre o texto';
+            mensajeError.style.display = 'block';
+            return;
+        }
+
+        const card = document.createElement('ion-card');
+
+        const cardContent = document.createElement('ion-card-content');
+        cardContent.textContent = nombre;
+
+        card.appendChild(cardContent);
+
+        cardContainer?.appendChild(card);
+    });
+
+});
