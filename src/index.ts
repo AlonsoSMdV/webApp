@@ -1,5 +1,4 @@
 // src/index.ts
-console.log('Script cargado')
 
 document.addEventListener('DOMContentLoaded', () => {
     const generarBoton = document.getElementById('generateButton') as HTMLButtonElement;
@@ -14,25 +13,30 @@ document.addEventListener('DOMContentLoaded', () => {
     generarBoton.addEventListener('click', () =>{
         const nombre  = nombreInput.value as string;
 
-        
         mensajeError.style.display='none';
+        new Promise((resolve, reject) =>{
+            setTimeout(() =>{
+                if (nombre.length < 3 || nombre.length == 0) {
+                    reject('El nombre debe de tener al menos tres caracteres')
+                }else{
+                    resolve(nombre);
+                }
+        }, 1500);
+        }).then((resolvedNombre) => {
+            const card = document.createElement('ion-card');
 
-        if (!nombre || nombre.trim() === '') {
-            mensajeError.textContent = 'Error: Debes ingresar un nombre o texto';
-            mensajeError.style.display = 'block';
-            return;
-        }
+            const cardContent = document.createElement('ion-card-content');
+            cardContent.textContent = nombre;
 
-        const card = document.createElement('ion-card');
+            card.appendChild(cardContent);
 
-        const cardContent = document.createElement('ion-card-content');
-        cardContent.textContent = nombre;
-
-        card.appendChild(cardContent);
-
-        cardContainer?.appendChild(card);
-        nombreInput.value = '';
-        
+            cardContainer?.appendChild(card);
+            nombreInput.value = '';
+        })
+        .catch((error) => {
+            mensajeError.textContent = `Error ${error}`;
+            mensajeError.style.display = 'block'; 
+        });
     });
 
 });
