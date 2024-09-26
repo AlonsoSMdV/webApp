@@ -31,6 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
         card.appendChild(cardContent);
 
         cardContainer?.appendChild(card);
+        nombreInput.value = '';
+        
     });
 
 });
