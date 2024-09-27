@@ -50,6 +50,13 @@ ion-button {
   justify-content: center; 
   gap: 10px; 
 }
+#imgContainer {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 10px; 
+}
+
 
 ion-card {
   width: 200px; 

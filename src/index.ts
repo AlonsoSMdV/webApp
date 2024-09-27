@@ -67,5 +67,4 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     });
 
-    // Consider adding a way to unsubscribe if necessary
 });
